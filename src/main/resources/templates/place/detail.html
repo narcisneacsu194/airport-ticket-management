@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout :: head"></head>
+<body id="page1">
+<div th:replace="layout :: nav"></div>
+<div th:replace="layout :: banner"></div>
+<div class="main">
+    <section id="content">
+        <article class="col1">
+            <div class="pad_1">
+                <!-- Flight Planner form -->
+                <form th:replace="layout :: booking-form"></form>
+            </div>
+        </article>
+        <article class="col2 pad_left1">
+            <h2 th:text="${place.cityName}"></h2>
+
+            <form th:action="@{|/places/${place.id}/edit|}" method="post" th:object="${place}">
+                <input type="hidden" th:field="*{id}"/>
+                <label>City name: </label><br/>
+                <input type="text" th:field="*{cityName}" class="standard-input-style"/><br/><br/>
+                <label>Country name: </label><br/>
+                <input type="text" th:field="*{countryName}" class="standard-input-style"/><br/><br/>
+                <label>Description: </label><br/>
+                <textarea th:field="*{description}" class="standard-input-style"></textarea><br/><br/>
+                <label>Starting price: </label><br/>
+                <input type="text" th:field="*{startingPrice}" class="standard-input-style"/><br/>
+                <input type="submit" value="Edit" class="button2"/>
+            </form>
+
+            <form th:action="@{|/places/${place.id}/delete|}" method="post">
+                <input type="submit" value="Delete" class="button2"/>
+            </form>
+        </article>
+    </section>
+</div>
+<div th:replace="layout :: flash"></div>
+<div th:replace="layout :: footer"></div>
+</body>
+</html>
