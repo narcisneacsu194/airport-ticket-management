@@ -13,7 +13,7 @@ implements UserDao{
     public User findById(Long id){
         Session session = sessionFactory.openSession();
         User user = session.get(User.class, id);
-        Hibernate.initialize(user.getBookingList());
+        Hibernate.initialize(user.getBookings());
         session.close();
         return user;
     }

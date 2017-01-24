@@ -14,7 +14,7 @@ public class User {
     private String currentCity;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Booking> bookingList;
+    private List<Booking> bookings;
 
     public User(){
 
@@ -44,11 +44,11 @@ public class User {
         this.currentCity = currentCity;
     }
 
-    public List<Booking> getBookingList() {
-        return bookingList;
+    public List<Booking> getBookings() {
+        return bookings;
     }
 
-    public void setBookingList(List<Booking> bookingList) {
-        this.bookingList = bookingList;
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }

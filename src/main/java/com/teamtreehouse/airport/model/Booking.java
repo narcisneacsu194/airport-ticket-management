@@ -3,7 +3,6 @@ package com.teamtreehouse.airport.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
-import java.util.Map;
 
 @Entity
 public class Booking {
@@ -16,10 +15,11 @@ public class Booking {
 
     @NotNull
     @ManyToMany(fetch = FetchType.LAZY)
-    private List<Trip> tripList;
+    private List<Trip> trips;
 
     @NotNull
-    private Map<Integer, String> passengerMap;
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Passenger> passengers;
 
     @NotNull
     private String paymentMethod;
@@ -44,24 +44,24 @@ public class Booking {
         this.tripReason = tripReason;
     }
 
-    public List<Trip> getTripList() {
-        return tripList;
+    public List<Trip> getTrips() {
+        return trips;
     }
 
-    public void setTripList(List<Trip> tripList) {
-        this.tripList = tripList;
-    }
-
-    public Map<Integer, String> getPassengerMap() {
-        return passengerMap;
-    }
-
-    public void setPassengerMap(Map<Integer, String> passengerMap) {
-        this.passengerMap = passengerMap;
+    public void setTrips(List<Trip> trips) {
+        this.trips = trips;
     }
 
     public String getPaymentMethod() {
         return paymentMethod;
+    }
+
+    public List<Passenger> getPassengers() {
+        return passengers;
+    }
+
+    public void setPassengers(List<Passenger> passengers) {
+        this.passengers = passengers;
     }
 
     public void setPaymentMethod(String paymentMethod) {

@@ -33,7 +33,7 @@ public class Trip {
 
     @NotNull
     @ManyToMany(fetch = FetchType.LAZY)
-    private List<Booking> bookingList;
+    private List<Booking> bookings;
 
     public Trip(){
 
@@ -103,11 +103,11 @@ public class Trip {
         this.airplaneModel = airplaneModel;
     }
 
-    public List<Booking> getBookingList() {
-        return bookingList;
+    public List<Booking> getBookings() {
+        return bookings;
     }
 
-    public void setBookingList(List<Booking> bookingList) {
-        this.bookingList = bookingList;
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }
