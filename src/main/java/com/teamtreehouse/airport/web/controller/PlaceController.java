@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
+
 @Controller
 public class PlaceController {
 
@@ -34,13 +36,13 @@ public class PlaceController {
     }
 
     @RequestMapping(value = "/places/{placeId}/edit", method = RequestMethod.POST)
-    public String editPlace(Place place, BindingResult result, RedirectAttributes redirectAttributes){
+    public String editPlace(@Valid Place place, BindingResult result, RedirectAttributes redirectAttributes){
         if(result.hasErrors()){
             redirectAttributes.addFlashAttribute("flash", new FlashMessage("Some of your input is invalid. Please try again!", FlashMessage.Status.FAILURE));
             return String.format("redirect:/places/%s/detail", place.getId());
         }
 
-        redirectAttributes.addFlashAttribute("flash", new FlashMessage("This place has been updated successfully", FlashMessage.Status.SUCCESS));
+        redirectAttributes.addFlashAttribute("flash", new FlashMessage("The place has been updated successfully", FlashMessage.Status.SUCCESS));
         placeService.save(place);
         return String.format("redirect:/places/%s/detail", place.getId());
     }
@@ -48,14 +50,14 @@ public class PlaceController {
     @RequestMapping(value = "/places/{placeId}/delete", method = RequestMethod.POST)
     public String deletePlace(@PathVariable Long placeId, RedirectAttributes redirectAttributes){
         Place place = placeService.findById(placeId);
-        redirectAttributes.addFlashAttribute("flash", new FlashMessage(String.format("Place %s has been deleted successfully!", place.getCityName()),
+        redirectAttributes.addFlashAttribute("flash", new FlashMessage(String.format("Place '%s' has been deleted successfully!", place.getCityName()),
                 FlashMessage.Status.SUCCESS));
         placeService.delete(place);
         return "redirect:/places/";
     }
 
     @RequestMapping(value = "/places/add-place", method = RequestMethod.POST)
-    public String addPlace(Place place, BindingResult result, RedirectAttributes redirectAttributes){
+    public String addPlace(@Valid Place place, BindingResult result, RedirectAttributes redirectAttributes){
         if(result.hasErrors()){
             redirectAttributes.addAttribute("place", place);
             redirectAttributes.addFlashAttribute("flash", new FlashMessage("Some of your input is invalid. Please try again!", FlashMessage.Status.FAILURE));
@@ -64,7 +66,7 @@ public class PlaceController {
 
         placeService.save(place);
 
-        redirectAttributes.addFlashAttribute("flash", new FlashMessage(String.format("Place %s has been added successfully!", place.getCityName()),
+        redirectAttributes.addFlashAttribute("flash", new FlashMessage(String.format("Place '%s' has been added successfully!", place.getCityName()),
                 FlashMessage.Status.SUCCESS));
         return String.format("redirect:/places/%s/detail", place.getId());
     }
