@@ -29,7 +29,8 @@
           <nav>
             <ul id="menu">
               <li th:classappend="${#httpServletRequest.servletPath.equals('/places') ? 'menu-active' : ''}"><a th:href="@{/places}">Places</a></li>
-              <li th:classappend="${#httpServletRequest.servletPath.equals('/users')}"><a href="@{/users}">Users</a></li>
+              <li th:classappend="${#httpServletRequest.servletPath.equals('/users') ? 'menu-active' : ''}"><a th:href="@{/users}">Users</a></li>
+              <li th:classappend="${#httpServletRequest.servletPath.equals('/trips') ? 'menu-active' : ''}"><a th:href="@{/trips}">Trips</a></li>
             </ul>
           </nav>
         </div>
