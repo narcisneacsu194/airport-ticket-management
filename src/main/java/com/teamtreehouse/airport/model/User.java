@@ -1,6 +1,8 @@
 package com.teamtreehouse.airport.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -9,8 +11,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Size(min = 3, max = 50)
     private String name;
 
+    @NotNull
+    @Size(min = 3, max = 50)
+    @Column(name = "current_city")
     private String currentCity;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

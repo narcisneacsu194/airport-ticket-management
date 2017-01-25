@@ -13,8 +13,6 @@ implements BookingDao{
     public Booking findById(Long id){
         Session session = sessionFactory.openSession();
         Booking booking = session.get(Booking.class, id);
-        Hibernate.initialize(booking.getTrips());
-        Hibernate.initialize(booking.getPassengers());
         session.close();
         return booking;
     }

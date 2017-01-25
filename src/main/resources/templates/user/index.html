@@ -8,11 +8,6 @@
     <section id="content">
         <article class="col1">
             <div class="pad_1">
-                <!-- Flight Planner form -->
-                <form th:replace="layout :: booking-form"></form>
-            </div>
-        </article>
-        <article class="col2 pad_left1">
             <h2>Users</h2>
             <div>
                 <ul>
@@ -32,7 +27,7 @@
                         <div class="bg">
                             <label>Current city: </label><br/>
                             <input type="text" class="standard-input-style" th:field="*{currentCity}"/>
-                        </div>
+                        </div><br/>
                     </div>
                     <div class="wrapper">
                         <input type="submit" class="button2" value="Add"/>
@@ -40,7 +35,9 @@
                 </form>
                 <br/>
             </div>
+            </div>
         </article>
+        <article th:replace="layout :: site-description"></article>
     </section>
 </div>
 <div th:replace="layout :: flash"></div>

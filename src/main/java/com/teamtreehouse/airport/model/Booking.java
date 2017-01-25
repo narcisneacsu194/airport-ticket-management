@@ -4,7 +4,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 public class Booking {
@@ -13,31 +12,27 @@ public class Booking {
     private Long id;
 
     @NotNull
-    private String tripPurpose;
-
-    @NotNull
+    @Column(name = "departure_date")
     private Date departureDate;
 
+    @Column(name = "return_date")
     private Date returnDate;
 
     @NotNull
-    private Boolean isDirect;
+    @Column(name = "number_of_passengers")
+    private Integer numberOfPassengers;
+
+    @ManyToOne
+    private User user;
 
     @NotNull
     @Size(min = 3, max = 50)
-    private String airplaneModel;
+    @Column(name = "place_of_departure")
+    private String placeOfDeparture;
 
     @NotNull
     @Size(min = 3, max = 50)
-    private String paymentMethod;
-
-    @NotNull
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Trip> trips;
-
-    @NotNull
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Passenger> passengers;
+    private String destination;
 
     public Booking(){
 
@@ -49,38 +44,6 @@ public class Booking {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getTripPurpose() {
-        return tripPurpose;
-    }
-
-    public void setTripPurpose(String tripPurpose) {
-        this.tripPurpose = tripPurpose;
-    }
-
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
-    public List<Trip> getTrips() {
-        return trips;
-    }
-
-    public void setTrips(List<Trip> trips) {
-        this.trips = trips;
-    }
-
-    public List<Passenger> getPassengers() {
-        return passengers;
-    }
-
-    public void setPassengers(List<Passenger> passengers) {
-        this.passengers = passengers;
     }
 
     public Date getDepartureDate() {
@@ -99,21 +62,36 @@ public class Booking {
         this.returnDate = returnDate;
     }
 
-    public Boolean getDirect() {
-        return isDirect;
+    public Integer getNumberOfPassengers() {
+        return numberOfPassengers;
     }
 
-    public void setDirect(Boolean direct) {
-        isDirect = direct;
+    public void setNumberOfPassengers(Integer numberOfPassengers) {
+        this.numberOfPassengers = numberOfPassengers;
     }
 
-    public String getAirplaneModel() {
-        return airplaneModel;
+    public User getUser() {
+        return user;
     }
 
-    public void setAirplaneModel(String airplaneModel) {
-        this.airplaneModel = airplaneModel;
+    public void setUser(User user) {
+        this.user = user;
     }
 
+    public String getPlaceOfDeparture() {
+        return placeOfDeparture;
+    }
+
+    public void setPlaceOfDeparture(String placeOfDeparture) {
+        this.placeOfDeparture = placeOfDeparture;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
 
 }

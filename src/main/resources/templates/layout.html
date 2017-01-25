@@ -28,9 +28,9 @@
         <div class="right">
           <nav>
             <ul id="menu">
+              <li th:classappend="${#httpServletRequest.servletPath.equals('/') ? 'menu-active' : ''}"><a th:href="@{/}">Book a flight</a></li>
               <li th:classappend="${#httpServletRequest.servletPath.equals('/places') ? 'menu-active' : ''}"><a th:href="@{/places}">Places</a></li>
               <li th:classappend="${#httpServletRequest.servletPath.equals('/users') ? 'menu-active' : ''}"><a th:href="@{/users}">Users</a></li>
-              <li th:classappend="${#httpServletRequest.servletPath.equals('/trips') ? 'menu-active' : ''}"><a th:href="@{/trips}">Trips</a></li>
             </ul>
           </nav>
         </div>
@@ -51,62 +51,28 @@
   <section id="content">
     <article class="col1">
       <div class="pad_1">
-        <!-- Flight Planner form -->
-        <form class="form_1" action="#" method="post" th:fragment="booking-form">
-          <h2>Your Flight Planner</h2>
-          <div class="wrapper pad_bot1">
-            <div class="radio marg_right1">
-              <input type="radio" name="name1"/>Round Trip<br/>
-              <input type="radio" name="name1"/>One Way
-            </div>
-            <div class="radio">
-              <input type="radio" name="name1"/>Empty-Leg<br/>
-              <input type="radio" name="name1"/>Multi-Leg
-            </div>
-          </div>
-          <div class="wrapper">
-            Leaving From:
-            <div class="bg">
-              <input type="text" class="input input1" value="Enter City or Airport Code" onBlur="if(this.value=='') this.value='Enter City or Airport Code'" onFocus="if(this.value =='Enter City or Airport Code' ) this.value=''"/>
-            </div>
-          </div>
-          <div class="wrapper">
-            Going To:
-            <div class="bg">
-              <input type="text" class="input input1" value="Enter City or Airport Code" onBlur="if(this.value=='') this.value='Enter City or Airport Code'" onFocus="if(this.value =='Enter City or Airport Code' ) this.value=''"/>
-            </div>
-          </div>
-          <div class="wrapper">
-            Departure Date and Time:
-            <div class="wrapper">
-              <div class="bg left">
-                <input type="text" class="input input2" value="mm/dd/yyyy " onBlur="if(this.value=='') this.value='mm/dd/yyyy '" onFocus="if(this.value =='mm/dd/yyyy ' ) this.value=''"/>
-              </div>
-              <div class="bg right">
-                <input type="text" class="input input2" value="12:00am" onBlur="if(this.value=='') this.value='12:00am'" onFocus="if(this.value =='12:00am' ) this.value=''"/>
-              </div>
-            </div>
-          </div>
-          <div class="wrapper">
-            Return Date and Time:
-            <div class="wrapper">
-              <div class="bg left">
-                <input type="text" class="input input2" value="mm/dd/yyyy " onBlur="if(this.value=='') this.value='mm/dd/yyyy '" onFocus="if(this.value =='mm/dd/yyyy ' ) this.value=''"/>
-              </div>
-              <div class="bg right">
-                <input type="text" class="input input2" value="12:00am" onBlur="if(this.value=='') this.value='12:00am'" onFocus="if(this.value =='12:00am' ) this.value=''"/>
-              </div>
-            </div>
-          </div>
-          <div class="wrapper">
-            <p>Passenger(s):</p>
-            <div class="bg left">
-              <input type="text" class="input input2" value="# passengers" onBlur="if(this.value=='') this.value='# passengers'" onFocus="if(this.value =='# passengers' ) this.value=''"/>
-            </div>
-            <a href="#" class="button2">go!</a>
-          </div>
-        </form>
       </div>
+    </article>
+
+    <article class="col2 pad_left1" th:fragment="site-description">
+      <h2>Welcome to our Website!</h2>
+      <p class="color1">Air Lines was established in 1954 and developed together with the Romanian aviation.
+        Air Lines performs its activity under the Ministry of Transportation and has been a member of SkyTeam Alliance as
+        of June 25th, 2010.
+        The company operates on more than 50 own destinations as well as destinations operated by its code
+        share partners.
+        The Romanian flag carrier owns one of the youngest fleet in Europe, consisting of 23 aircraft, and
+        has been a member of the International Air Transport Association (IATA) since 1993 and of the Association of
+        European Airlines (AEA) since 2000.
+      </p>
+      <p class="color1">
+        Air Lines is a modern and future-oriented company which is environmentally friendly by implementing
+        innovative procedures to reduce carbon dioxide emissions.
+        On June 25th, 2010, Air Lines joined SkyTeam, one of the global alliances providing customers from
+        member airlines access to an extensive global network with more destinations, more frequencies and more
+        connections. Joining SkyTeam loyalty program, the passengers can earn and redeem miles by travelling with any
+        member airline.
+      </p>
     </article>
   </section>
 </div>

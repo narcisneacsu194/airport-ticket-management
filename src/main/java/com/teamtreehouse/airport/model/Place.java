@@ -1,9 +1,6 @@
 package com.teamtreehouse.airport.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -15,16 +12,20 @@ public class Place {
 
     @NotNull
     @Size(min = 3, max = 20)
+    @Column(name = "city_name")
     private String cityName;
 
     @NotNull
     @Size(min = 3, max = 20)
+    @Column(name = "country_name")
     private String countryName;
 
     @NotNull
+    @Size(min = 3, max = 1000)
     private String description;
 
     @NotNull
+    @Column(name = "starting_price")
     private Integer startingPrice;
 
     public Place(){

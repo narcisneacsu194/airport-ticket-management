@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout :: head"></head>
+<body id="page1">
+<div th:replace="layout :: nav"></div>
+<div th:replace="layout :: banner"></div>
+<div class="main">
+    <section id="content">
+        <article class="col1">
+            <div class="pad_1">
+                <h2>Book a flight</h2>
+                <form class="form_1" th:action="@{/bookings/add-booking}" method="post" th:fragment="booking-form"
+                    th:object="${booking}">
+
+                    <div class="wrapper">
+                        Leaving From:
+                        <div class="bg">
+                            <input type="text" class="input input1" value="Enter City or Airport Code" onBlur="if
+(this.value=='') this.value='Enter City or Airport Code'" onFocus="if(this.value =='Enter City or Airport Code' )
+this.value=''" />
+                        </div>
+                    </div>
+
+
+                    <div class="wrapper">
+                        Going To:
+                        <div class="bg">
+                            <input type="text" class="input input1" value="Enter City or Airport Code" onBlur="if
+(this.value=='') this.value='Enter City or Airport Code'" onFocus="if(this.value =='Enter City or Airport Code' )
+this.value=''" />
+                        </div>
+                    </div>
+
+
+                    <div class="wrapper">
+                        Departure Date and Time:
+                            <div class="bg">
+                                <input type="text" class="input input2" value="mm/dd/yyyy 12:00am"
+                                    />
+                            </div>
+                            <!--<div class="bg left">-->
+                                <!--<input type="text" class="input input2" value="mm/dd/yyyy " onBlur="if-->
+<!--(this.value=='') this.value='mm/dd/yyyy '" onFocus="if(this.value =='mm/dd/yyyy ' ) this.value=''"/>-->
+                            <!--</div>-->
+
+
+                            <!--<div class="bg right">-->
+                                <!--<input type="text" class="input input2" value="12:00am" onBlur="if(this.value=='')-->
+<!--this.value='12:00am'" onFocus="if(this.value =='12:00am' ) this.value=''"/>-->
+                            <!--</div>-->
+
+                    </div>
+
+
+                    <div class="wrapper">
+                        Return Date and Time:
+                            <input type="text" class="input input2" value="mm/dd/yyyy 12:00am"
+                                />
+                            <!--<div class="bg left">-->
+                                <!--<input type="text" class="input input2" value="mm/dd/yyyy " onBlur="if-->
+<!--(this.value=='') this.value='mm/dd/yyyy '" onFocus="if(this.value =='mm/dd/yyyy ' ) this.value=''"/>-->
+                            <!--</div>-->
+                            <!--<div class="bg right">-->
+                                <!--<input type="text" class="input input2" value="12:00am" onBlur="if(this.value=='')-->
+<!--this.value='12:00am'" onFocus="if(this.value =='12:00am' ) this.value=''"/>-->
+                            <!--</div>-->
+                    </div>
+
+
+                    <div class="wrapper">
+                        User:
+                            <div class="bg">
+                                <!--<select th:field="*{user.id}">-->
+                                <select>
+                                    <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}"></option>
+                                </select>
+                            </div>
+                    </div>
+
+
+                    <div class="wrapper">
+                        <p>Passenger(s):</p>
+                        <div class="bg left">
+                            <input type="text" class="input input2" value="# passengers" onBlur="if(this.value=='')
+this.value='# passengers'" onFocus="if(this.value =='# passengers' ) this.value=''" />
+                        </div>
+                        <a href="#" class="button2">go!</a>
+                    </div>
+
+
+                </form>
+            </div>
+        </article>
+        <article th:replace="layout :: site-description"></article>
+    </section>
+</div>
+<div th:replace="layout :: flash"></div>
+<div th:replace="layout :: footer"></div>
+</body>
+</html>
