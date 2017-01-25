@@ -13,7 +13,6 @@ implements TripDao{
     public Trip findById(Long id){
         Session session = sessionFactory.openSession();
         Trip trip = session.get(Trip.class, id);
-        Hibernate.initialize(trip.getBookings());
         session.close();
         return trip;
     }
