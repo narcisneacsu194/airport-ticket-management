@@ -38,7 +38,6 @@ public class UserController {
         User user = userService.findById(userId);
         model.addAttribute("user", user);
         model.addAttribute("bookings", user.getBookings());
-        model.addAttribute("oneBooking", bookingService.findById(1L));
         return "user/detail";
     }
 

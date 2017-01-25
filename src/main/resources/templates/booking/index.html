@@ -9,15 +9,14 @@
         <article class="col1">
             <div class="pad_1">
                 <h2>Book a flight</h2>
-                <form class="form_1" th:action="@{/bookings/add-booking}" method="post" th:fragment="booking-form"
+                <form class="form_1" th:action="@{/bookings/add-booking}" method="post"
                     th:object="${booking}">
-
                     <div class="wrapper">
                         Leaving From:
                         <div class="bg">
-                            <input type="text" class="input input1" value="Enter City or Airport Code" onBlur="if
-(this.value=='') this.value='Enter City or Airport Code'" onFocus="if(this.value =='Enter City or Airport Code' )
-this.value=''" />
+                            <input type="text" class="input input1" value="Enter Departing City" onBlur="if
+(this.value=='') this.value='Enter Departing City'" onFocus="if(this.value =='Enter Departing City' )
+this.value='Enter Departing City'" th:field="*{placeOfDeparture}"/>
                         </div>
                     </div>
 
@@ -25,69 +24,49 @@ this.value=''" />
                     <div class="wrapper">
                         Going To:
                         <div class="bg">
-                            <input type="text" class="input input1" value="Enter City or Airport Code" onBlur="if
-(this.value=='') this.value='Enter City or Airport Code'" onFocus="if(this.value =='Enter City or Airport Code' )
-this.value=''" />
+                            <input type="text" class="input input1" value="Enter Destination City" onBlur="if
+(this.value=='') this.value='Enter Destination City'" onFocus="if(this.value =='Enter Destination City' )
+this.value='Enter Destination City'" th:field="*{destination}"/>
                         </div>
                     </div>
 
-
                     <div class="wrapper">
                         Departure Date and Time:
-                            <div class="bg">
-                                <input type="text" class="input input2" value="mm/dd/yyyy 12:00am"
-                                    />
-                            </div>
-                            <!--<div class="bg left">-->
-                                <!--<input type="text" class="input input2" value="mm/dd/yyyy " onBlur="if-->
-<!--(this.value=='') this.value='mm/dd/yyyy '" onFocus="if(this.value =='mm/dd/yyyy ' ) this.value=''"/>-->
-                            <!--</div>-->
-
-
-                            <!--<div class="bg right">-->
-                                <!--<input type="text" class="input input2" value="12:00am" onBlur="if(this.value=='')-->
-<!--this.value='12:00am'" onFocus="if(this.value =='12:00am' ) this.value=''"/>-->
-                            <!--</div>-->
-
+                        <div class="bg">
+                            <input type="text" class="input input1" value="dd/mm/yyyy 12:00am" onBlur="if
+(this.value=='') this.value='dd/mm/yyyy 12:00am'" onFocus="if(this.value =='dd/mm/yyyy 12:00am' )
+this.value='dd/mm/yyyy 12:00am'" th:field="*{departureDate}"/>
+                        </div>
                     </div>
-
 
                     <div class="wrapper">
                         Return Date and Time:
-                            <input type="text" class="input input2" value="mm/dd/yyyy 12:00am"
-                                />
-                            <!--<div class="bg left">-->
-                                <!--<input type="text" class="input input2" value="mm/dd/yyyy " onBlur="if-->
-<!--(this.value=='') this.value='mm/dd/yyyy '" onFocus="if(this.value =='mm/dd/yyyy ' ) this.value=''"/>-->
-                            <!--</div>-->
-                            <!--<div class="bg right">-->
-                                <!--<input type="text" class="input input2" value="12:00am" onBlur="if(this.value=='')-->
-<!--this.value='12:00am'" onFocus="if(this.value =='12:00am' ) this.value=''"/>-->
-                            <!--</div>-->
+                        <div class="bg">
+                            <input type="text" class="input input1" value="dd/mm/yyyy 12:00am" onBlur="if
+(this.value=='') this.value='dd/mm/yyyy 12:00am'" onFocus="if(this.value =='dd/mm/yyyy 12:00am' )
+this.value='dd/mm/yyyy 12:00am'" th:field="*{returnDate}"/>
+                        </div>
                     </div>
-
 
                     <div class="wrapper">
-                        User:
-                            <div class="bg">
-                                <!--<select th:field="*{user.id}">-->
-                                <select>
-                                    <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}"></option>
-                                </select>
-                            </div>
+                        Users:<br/>
+                        <select name="one" class="dropdown-select" th:field="*{user.id}">
+                            <option th:value="Select..."></option>
+                            <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}"></option>
+                        </select>
                     </div>
-
 
                     <div class="wrapper">
                         <p>Passenger(s):</p>
                         <div class="bg left">
                             <input type="text" class="input input2" value="# passengers" onBlur="if(this.value=='')
-this.value='# passengers'" onFocus="if(this.value =='# passengers' ) this.value=''" />
+this.value='# passengers'" onFocus="if(this.value =='# passengers' ) this.value=''" th:field="*{numberOfPassengers}"/>
                         </div>
-                        <a href="#" class="button2">go!</a>
                     </div>
 
-
+                    <div class="wrapper">
+                        <input type="submit" class="button2" value="GO!"/>
+                    </div>
                 </form>
             </div>
         </article>

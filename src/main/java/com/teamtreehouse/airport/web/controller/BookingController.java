@@ -1,6 +1,7 @@
 package com.teamtreehouse.airport.web.controller;
 
 import com.teamtreehouse.airport.model.Booking;
+import com.teamtreehouse.airport.model.User;
 import com.teamtreehouse.airport.service.BookingService;
 import com.teamtreehouse.airport.service.UserService;
 import com.teamtreehouse.airport.web.FlashMessage;
@@ -25,6 +26,9 @@ public class BookingController {
 
     @RequestMapping("/")
     public String bookingForm(Model model){
+        if(!model.containsAttribute("booking")){
+            model.addAttribute("booking", new Booking());
+        }
         model.addAttribute("users", userService.findAll());
         return "booking/index";
     }
@@ -38,6 +42,9 @@ public class BookingController {
                             FlashMessage.Status.FAILURE));
             return "redirect:/";
         }
+
+        User user = this.userService.findById(booking.getUser().getId());
+        booking.setUser(user);
 
         bookingService.save(booking);
         redirectAttributes.addFlashAttribute("flash",

@@ -3,7 +3,6 @@ package com.teamtreehouse.airport.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Date;
 
 @Entity
 public class Booking {
@@ -13,10 +12,10 @@ public class Booking {
 
     @NotNull
     @Column(name = "departure_date")
-    private Date departureDate;
+    private String departureDate;
 
     @Column(name = "return_date")
-    private Date returnDate;
+    private String returnDate;
 
     @NotNull
     @Column(name = "number_of_passengers")
@@ -46,19 +45,19 @@ public class Booking {
         this.id = id;
     }
 
-    public Date getDepartureDate() {
+    public String getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(Date departureDate) {
+    public void setDepartureDate(String departureDate) {
         this.departureDate = departureDate;
     }
 
-    public Date getReturnDate() {
+    public String getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(Date returnDate) {
+    public void setReturnDate(String returnDate) {
         this.returnDate = returnDate;
     }
 

@@ -21,6 +21,8 @@ public class User {
     private String currentCity;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "user_booking", joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "bookings_id")})
     private List<Booking> bookings;
 
     public User(){

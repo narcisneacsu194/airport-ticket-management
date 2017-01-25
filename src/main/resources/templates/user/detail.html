@@ -29,15 +29,11 @@
             <ul th:each="booking : ${bookings}">
                 <li>--------------------------------------------------------------------------------------------------</li>
                 <li>Booking #1</li>
-                <li th:each="trip : ${booking.trips}"><ul>
-                    <li th:text="|Place of departure: ${trip.placeOfDeparture}|" style="font-weight: bold"></li>
-                    <li th:text="|Destination: ${trip.destination}|" style="font-weight: bold"></li>
-                    <li th:text="|Price: ${trip.price} euros|" style="font-weight: bold"></li>
-                </ul></li>
+                <li th:text="|Place of departure: ${booking.placeOfDeparture}|" style="font-weight: bold"></li>
+                <li th:text="|Destination: ${booking.destination}|" style="font-weight: bold"></li>
                 <li th:text="|Departure date: ${booking.departureDate}|" style="font-weight: bold"></li>
                 <li th:text="|Return date: ${booking.returnDate}|" style="font-weight: bold"></li>
-                <li th:text="|Number of passengers: ${booking.numberOfPassengers}|"
-                    style="font-weight: bold"></li><br/>
+                <li th:text="|Number of passengers: ${booking.numberOfPassengers}|" style="font-weight: bold"></li><br/>
             </ul>
         </article>
     </section>
