@@ -4,10 +4,11 @@ import com.teamtreehouse.airport.dao.PlaceDao;
 import com.teamtreehouse.airport.model.Place;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Repository
+@Service
 public class PlaceServiceImpl implements PlaceService{
 
     @Autowired

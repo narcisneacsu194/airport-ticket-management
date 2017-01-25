@@ -3,9 +3,11 @@ package com.teamtreehouse.airport.service;
 import com.teamtreehouse.airport.dao.TripDao;
 import com.teamtreehouse.airport.model.Trip;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TripServiceImpl implements TripService{
 
     @Autowired
