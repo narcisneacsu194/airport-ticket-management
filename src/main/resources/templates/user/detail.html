@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout :: head"></head>
+<body id="page1">
+<div th:replace="layout :: nav"></div>
+<div th:replace="layout :: banner"></div>
+<div class="main">
+    <section id="content">
+        <article class="col1">
+            <div class="pad_1">
+                <!-- Flight Planner form -->
+                <form th:replace="layout :: booking-form"></form>
+            </div>
+        </article>
+        <article class="col2 pad_left1">
+            <h2 th:text="${user.name}"></h2>
+
+            <form th:action="@{|/users/${user.id}/edit|}" method="post" th:object="${user}">
+                <input type="hidden" th:field="*{id}"/>
+                <label>User name: </label><br/>
+                <input type="text" th:field="*{name}" class="standard-input-style"/><br/><br/>
+                <label>Current city: </label><br/>
+                <input type="text" th:field="*{currentCity}" class="standard-input-style"/><br/><br/>
+                <input type="submit" value="Edit" class="button2"/>
+            </form>
+
+            <form th:action="@{|/users/${user.id}/delete|}" method="post">
+                <input type="submit" value="Delete" class="button2"/>
+            </form><br/><br/>
+
+            <h2>Bookings made by this user</h2>
+            <ul th:each="booking : ${bookings}">
+                <li>--------------------------------------------------------------------------------------------------</li>
+                <li>Booking #1</li>
+                <li th:text="|Trip purpose: ${booking.tripPurpose}|" style="font-weight: bold"></li>
+                <li th:text="|Payment method: ${booking.paymentMethod}|" style="font-weight: bold"></li><br/>
+                <li><ul th:each="trip : ${oneBooking.trips}">
+                    <li style="font-weight: bold">Trip #1</li>
+                    <li th:text="|Place of departure: ${trip.placeOfDeparture}|" style="font-weight: bold"></li>
+                    <li th:text="|Destination: ${trip.destination}|" style="font-weight: bold"></li>
+                    <li th:text="|Departure date: ${trip.departureDate}|" style="font-weight: bold"></li>
+                    <li th:text="|Return date: ${trip.returnDate}|" style="font-weight: bold"></li>
+                    <li th:text="|Price: ${trip.price} euros|" style="font-weight: bold"></li>
+                    <li th:if="${trip.direct}"><strong>Is direct trip: yes</strong></li>
+                    <li th:if="${trip.direct} == false"><strong>Is direct trip: no</strong></li>
+                    <li th:text="|Airplane model: ${trip.airplaneModel}|" style="font-weight: bold"></li><br/>
+                </ul></li>
+                <li><ul th:each="passenger : ${oneBooking.passengers}">
+                    <li style="font-weight: bold">Passenger #1</li>
+                    <li th:text="|Number of passengers: ${passenger.numberOfPassengers}|" style="font-weight: bold"></li>
+                    <li th:text="|Passenger type: ${passenger.type}|" style="font-weight: bold"></li><br/>
+                </ul></li>
+            </ul>
+        </article>
+    </section>
+</div>
+<div th:replace="layout :: flash"></div>
+<div th:replace="layout :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout :: head"></head>
+<body id="page1">
+<div th:replace="layout :: nav"></div>
+<div th:replace="layout :: banner"></div>
+<div class="main">
+    <section id="content">
+        <article class="col1">
+            <div class="pad_1">
+                <!-- Flight Planner form -->
+                <form th:replace="layout :: booking-form"></form>
+            </div>
+        </article>
+        <article class="col2 pad_left1">
+            <h2>Users</h2>
+            <div>
+                <ul>
+                    <li th:each="user : ${users}">
+                        <a th:href="@{|/users/${user.id}/detail|}"><h3 th:text="${user.name}"></h3></a>
+                    </li>
+                </ul>
+                <form th:action="@{/users/add-user}" method="post" th:object="${user}">
+                    <h2>Add new user</h2>
+                    <div class="wrapper">
+                        <div class="bg">
+                            <label>User name: </label><br/>
+                            <input type="text" class="standard-input-style" th:field="*{name}"/>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="bg">
+                            <label>Current city: </label><br/>
+                            <input type="text" class="standard-input-style" th:field="*{currentCity}"/>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <input type="submit" class="button2" value="Add"/>
+                    </div>
+                </form>
+                <br/>
+            </div>
+        </article>
+    </section>
+</div>
+<div th:replace="layout :: flash"></div>
+<div th:replace="layout :: footer"></div>
+</body>
+</html>
