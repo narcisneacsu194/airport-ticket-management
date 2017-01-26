@@ -8,46 +8,49 @@
     <section id="content">
         <article class="col1">
             <div class="pad_1">
-            <h2>Places to visit</h2>
-            <div>
-                <ul>
-                    <li th:each="place : ${places}">
-                        <a th:href="@{|/places/${place.id}/detail|}"><h3 th:text="${place.cityName}"></h3></a>
-                        <p th:text="${place.description}"></p>
-                    </li>
-                </ul>
-                <form th:action="@{/places/add-place}" method="post" th:object="${place}">
-                    <h2>Add new place</h2>
-                    <div class="wrapper">
-                        <div class="bg">
-                            <label>City name: </label><br/>
-                            <input type="text" class="standard-input-style" th:field="*{cityName}"/>
+                <h2>Places to visit</h2>
+                <div>
+                    <ul>
+                        <li th:each="place : ${places}">
+                            <a th:href="@{|/places/${place.id}/detail|}">
+                                <h3 th:text="${place.cityName}"></h3>
+                            </a>
+                            <p th:text="${place.description}"></p>
+                        </li>
+                    </ul>
+                    <form th:action="@{/places/add-place}" method="post" th:object="${place}">
+                        <h2>Add new place</h2>
+                        <div class="wrapper">
+                            <div class="bg">
+                                <label>City name: </label><br/>
+                                <input type="text" class="standard-input-style" th:field="*{cityName}"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="wrapper">
-                        <div class="bg">
-                            <label>Country name: </label><br/>
-                            <input type="text" class="standard-input-style" th:field="*{countryName}"/>
+                        <div class="wrapper">
+                            <div class="bg">
+                                <label>Country name: </label><br/>
+                                <input type="text" class="standard-input-style" th:field="*{countryName}"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="wrapper">
-                        <div class="bg">
-                            <label>Description: </label><br/>
-                            <textarea class="standard-input-style" th:field="*{description}"></textarea>
+                        <div class="wrapper">
+                            <div class="bg">
+                                <label>Description: </label><br/>
+                                <textarea class="standard-input-style" th:field="*{description}"></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="wrapper">
-                        <div class="bg">
-                            <label>Starting price: </label><br/>
-                            <input type="text" class="standard-input-style" th:field="*{startingPrice}"/>
-                        </div><br/>
-                    </div>
-                    <div class="wrapper">
-                        <input type="submit" class="button2" value="Add"/>
-                    </div>
-                </form>
-                <br/>
-            </div>
+                        <div class="wrapper">
+                            <div class="bg">
+                                <label>Starting price: </label><br/>
+                                <input type="text" class="standard-input-style" th:field="*{startingPrice}"/>
+                            </div>
+                            <br/>
+                        </div>
+                        <div class="wrapper">
+                            <input type="submit" class="button2" value="Add"/>
+                        </div>
+                    </form>
+                    <br/>
+                </div>
             </div>
         </article>
         <article th:replace="layout :: site-description"></article>

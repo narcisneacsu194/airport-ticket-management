@@ -8,32 +8,33 @@
     <section id="content">
         <article class="col1">
             <div class="pad_1">
-            <h2 th:text="${user.name}"></h2>
-
-            <form th:action="@{|/users/${user.id}/edit|}" method="post" th:object="${user}">
-                <input type="hidden" th:field="*{id}"/>
-                <label>User name: </label><br/>
-                <input type="text" th:field="*{name}" class="standard-input-style"/><br/><br/>
-                <label>Current city: </label><br/>
-                <input type="text" th:field="*{currentCity}" class="standard-input-style"/><br/><br/>
-                <input type="submit" value="Edit" class="button2"/>
-            </form>
-
-            <form th:action="@{|/users/${user.id}/delete|}" method="post">
-                <input type="submit" value="Delete" class="button2"/>
-            </form><br/><br/>
+                <h2 th:text="${user.name}"></h2>
+                <form th:action="@{|/users/${user.id}/edit|}" method="post" th:object="${user}">
+                    <input type="hidden" th:field="*{id}"/>
+                    <label>User name: </label><br/>
+                    <input type="text" th:field="*{name}" class="standard-input-style"/><br/><br/>
+                    <label>Current city: </label><br/>
+                    <input type="text" th:field="*{currentCity}" class="standard-input-style"/><br/><br/>
+                    <input type="submit" value="Edit" class="button2"/>
+                </form>
+                <form th:action="@{|/users/${user.id}/delete|}" method="post">
+                    <input type="submit" value="Delete" class="button2"/>
+                </form>
+                <br/><br/>
             </div>
         </article>
         <article class="col2 pad_left1">
-            <h2 th:text="|Bookings made by user ${user.name}|"></h2>
+            <h2 th:text="|Bookings made by user '${user.name}'|"></h2>
+            <li><strong>From newest to oldest</strong></li>
             <ul th:each="booking : ${bookings}">
                 <li>--------------------------------------------------------------------------------------------------</li>
-                <li>Booking #1</li>
                 <li th:text="|Place of departure: ${booking.placeOfDeparture}|" style="font-weight: bold"></li>
                 <li th:text="|Destination: ${booking.destination}|" style="font-weight: bold"></li>
-                <li th:text="|Departure date: ${booking.departureDate}|" style="font-weight: bold"></li>
-                <li th:text="|Return date: ${booking.returnDate}|" style="font-weight: bold"></li>
-                <li th:text="|Number of passengers: ${booking.numberOfPassengers}|" style="font-weight: bold"></li><br/>
+                <li th:text="|Departure date: ${#dates.format(booking.departureDate, 'dd MMM yyyy HH:mm')}|" style="font-weight: bold"></li>
+                <li th:if="${booking.returnDate != null}" th:text="|Return date: ${#dates.format(booking.returnDate, 'dd MMM yyyy HH:mm')}|" style="font-weight: bold"></li>
+                <li th:if="${booking.returnDate == null}" style="font-weight: bold;">-</li>
+                <li th:text="|Number of passengers: ${booking.numberOfPassengers}|" style="font-weight: bold"></li>
+                <br/>
             </ul>
         </article>
     </section>
