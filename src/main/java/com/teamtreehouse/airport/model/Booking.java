@@ -2,7 +2,6 @@ package com.teamtreehouse.airport.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -25,14 +24,11 @@ public class Booking {
     @ManyToOne
     private User user;
 
-    @NotNull
-    @Size(min = 3, max = 50)
-    @Column(name = "place_of_departure")
-    private String placeOfDeparture;
+    @ManyToOne
+    private Place placeOfDeparture;
 
-    @NotNull
-    @Size(min = 3, max = 50)
-    private String destination;
+    @ManyToOne
+    private Place destination;
 
     public Booking(){
 
@@ -78,19 +74,19 @@ public class Booking {
         this.user = user;
     }
 
-    public String getPlaceOfDeparture() {
+    public Place getPlaceOfDeparture() {
         return placeOfDeparture;
     }
 
-    public void setPlaceOfDeparture(String placeOfDeparture) {
+    public void setPlaceOfDeparture(Place placeOfDeparture) {
         this.placeOfDeparture = placeOfDeparture;
     }
 
-    public String getDestination() {
+    public Place getDestination() {
         return destination;
     }
 
-    public void setDestination(String destination) {
+    public void setDestination(Place destination) {
         this.destination = destination;
     }
 

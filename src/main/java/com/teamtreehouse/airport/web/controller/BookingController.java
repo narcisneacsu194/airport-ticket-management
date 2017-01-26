@@ -2,6 +2,7 @@ package com.teamtreehouse.airport.web.controller;
 
 import com.teamtreehouse.airport.model.Booking;
 import com.teamtreehouse.airport.service.BookingService;
+import com.teamtreehouse.airport.service.PlaceService;
 import com.teamtreehouse.airport.service.UserService;
 import com.teamtreehouse.airport.web.FlashMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +29,16 @@ public class BookingController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private PlaceService placeService;
+
     @RequestMapping("/")
     public String bookingForm(Model model){
         if(!model.containsAttribute("booking")){
             model.addAttribute("booking", new Booking());
         }
         model.addAttribute("users", userService.findAll());
+        model.addAttribute("places", placeService.findAll());
         return "booking/index";
     }
 

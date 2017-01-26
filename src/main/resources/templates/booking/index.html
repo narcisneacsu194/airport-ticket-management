@@ -12,16 +12,16 @@
                 <form class="form_1" th:action="@{/bookings/add-booking}" method="post"
                       th:object="${booking}">
                     <div class="wrapper">
-                        Leaving From:
-                        <div class="bg">
-                            <input type="text" class="input input1" placeholder="Enter departing city..." th:field="*{placeOfDeparture}"/>
-                        </div>
+                        Leaving From:<br/>
+                        <select class="dropdown-select" th:field="*{placeOfDeparture.id}">
+                            <option th:each="place : ${places}" th:value="${place.id}" th:text="|${place.cityName}, ${place.countryName}|"></option>
+                        </select>
                     </div>
                     <div class="wrapper">
-                        Going To:
-                        <div class="bg">
-                            <input type="text" class="input input1" placeholder="Enter destination city..." th:field="*{destination}"/>
-                        </div>
+                        Going To:<br/>
+                        <select class="dropdown-select" th:field="*{destination.id}">
+                            <option th:each="place : ${places}" th:value="${place.id}" th:text="|${place.cityName}, ${place.countryName}|"></option>
+                        </select>
                     </div>
                     <div class="wrapper">
                         Departure Date and Time:
@@ -37,7 +37,7 @@
                     </div>
                     <div class="wrapper">
                         Users:<br/>
-                        <select name="one" class="dropdown-select" th:field="*{user.id}">
+                        <select class="dropdown-select" th:field="*{user.id}">
                             <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}"></option>
                         </select>
                     </div>

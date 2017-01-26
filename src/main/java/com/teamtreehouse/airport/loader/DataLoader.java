@@ -42,8 +42,8 @@ public class DataLoader implements ApplicationRunner{
 
             for(int j = 1;j <= 5;j++){
                 Booking booking = new Booking();
-                booking.setPlaceOfDeparture("place_of_departure" + j);
-                booking.setDestination("destination" + j);
+                booking.setPlaceOfDeparture(place);
+                booking.setDestination(place);
                 booking.setDepartureDate(new Date());
                 booking.setReturnDate(new Date());
                 booking.setNumberOfPassengers(j);

@@ -9,11 +9,4 @@ import org.springframework.stereotype.Repository;
 public class BookingDaoImpl extends GenericDaoImpl<Booking>
 implements BookingDao{
 
-    @Override
-    public Booking findById(Long id){
-        Session session = sessionFactory.openSession();
-        Booking booking = session.get(Booking.class, id);
-        session.close();
-        return booking;
-    }
 }

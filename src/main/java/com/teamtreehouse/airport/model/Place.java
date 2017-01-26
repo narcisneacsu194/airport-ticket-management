@@ -3,6 +3,8 @@ package com.teamtreehouse.airport.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Place {
@@ -27,6 +29,9 @@ public class Place {
     @NotNull
     @Column(name = "starting_price")
     private Integer startingPrice;
+
+    @OneToMany(mappedBy = "placeOfDeparture", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Booking> bookings = new ArrayList<>();
 
     public Place(){
 
@@ -70,5 +75,13 @@ public class Place {
 
     public void setStartingPrice(Integer startingPrice) {
         this.startingPrice = startingPrice;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }
