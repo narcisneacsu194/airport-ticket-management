@@ -10,6 +10,12 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    private Place placeOfDeparture;
+
+    @ManyToOne
+    private Place destination;
+
     @NotNull
     @Column(name = "departure_date")
     private Date departureDate;
@@ -24,12 +30,6 @@ public class Booking {
     @ManyToOne
     private User user;
 
-    @ManyToOne
-    private Place placeOfDeparture;
-
-    @ManyToOne
-    private Place destination;
-
     public Booking(){
 
     }
@@ -40,6 +40,22 @@ public class Booking {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Place getPlaceOfDeparture() {
+        return placeOfDeparture;
+    }
+
+    public void setPlaceOfDeparture(Place placeOfDeparture) {
+        this.placeOfDeparture = placeOfDeparture;
+    }
+
+    public Place getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Place destination) {
+        this.destination = destination;
     }
 
     public Date getDepartureDate() {
@@ -72,22 +88,6 @@ public class Booking {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public Place getPlaceOfDeparture() {
-        return placeOfDeparture;
-    }
-
-    public void setPlaceOfDeparture(Place placeOfDeparture) {
-        this.placeOfDeparture = placeOfDeparture;
-    }
-
-    public Place getDestination() {
-        return destination;
-    }
-
-    public void setDestination(Place destination) {
-        this.destination = destination;
     }
 
 }
