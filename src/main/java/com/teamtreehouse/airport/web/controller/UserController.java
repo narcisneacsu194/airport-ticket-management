@@ -24,9 +24,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private BookingService bookingService;
-
     @RequestMapping("/users")
     public String listUsers(Model model){
         if(!model.containsAttribute("user")){
@@ -59,7 +56,7 @@ public class UserController {
 
         userService.save(user);
         redirectAttributes.addFlashAttribute("flash",
-                new FlashMessage(String.format("User '%s' has been added successfully!", user.getName()),
+                new FlashMessage(String.format("User '%s' has been updated successfully!", user.getName()),
                         FlashMessage.Status.SUCCESS));
         return String.format("redirect:/users/%s/detail", user.getId());
     }

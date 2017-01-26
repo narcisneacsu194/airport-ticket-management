@@ -32,7 +32,7 @@
                 <li th:text="|Destination: ${booking.destination}|" style="font-weight: bold"></li>
                 <li th:text="|Departure date: ${#dates.format(booking.departureDate, 'dd MMM yyyy HH:mm')}|" style="font-weight: bold"></li>
                 <li th:if="${booking.returnDate != null}" th:text="|Return date: ${#dates.format(booking.returnDate, 'dd MMM yyyy HH:mm')}|" style="font-weight: bold"></li>
-                <li th:if="${booking.returnDate == null}" style="font-weight: bold;">-</li>
+                <li th:if="${booking.returnDate == null}" style="font-weight: bold;">Return date: -</li>
                 <li th:text="|Number of passengers: ${booking.numberOfPassengers}|" style="font-weight: bold"></li>
                 <br/>
             </ul>
