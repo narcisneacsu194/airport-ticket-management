@@ -1,5 +1,6 @@
 package com.teamtreehouse.airport.web.controller;
 
+import com.teamtreehouse.airport.model.Booking;
 import com.teamtreehouse.airport.model.User;
 import com.teamtreehouse.airport.service.BookingService;
 import com.teamtreehouse.airport.service.UserService;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.Collections;
+import java.util.Comparator;
 
 @Controller
 public class UserController {
@@ -37,7 +40,12 @@ public class UserController {
     public String userDetail(@PathVariable Long userId, Model model){
         User user = userService.findById(userId);
         model.addAttribute("user", user);
+
+        Collections.sort(user.getBookings(), (o1, o2) ->
+            -1 * o1.getDepartureDate().compareTo(o2.getDepartureDate()));
+
         model.addAttribute("bookings", user.getBookings());
+
         return "user/detail";
     }
 
