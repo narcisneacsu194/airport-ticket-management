@@ -25,7 +25,7 @@ too much on the looks of a website.
 What I would change to this project ? Instead of H2 database engine, I would use a real world alternative like MySQL, PostgreSQL etc.
 
 The other thing I would change, is that instead of using Thymeleaf as my dynamic view, I would replace it with AngularJS,
-as it becomes more and more used in the real world projects.
+because I think it is more easy to use and has a richer documentation.
 
 I would also want to integrate this application within a cloud computing service, like Microsoft Azure.
 
