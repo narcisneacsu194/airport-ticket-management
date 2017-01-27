@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class PlaceDaoImpl extends GenericDaoImpl<Place>
 implements PlaceDao{
+
+    // This particular method had to be overridden, in order to include the Hibernate initialize static method.
+    // This method helps prevent data fetching runtime errors.
     @Override
     public Place findById(Long id){
         Session session = sessionFactory.openSession();

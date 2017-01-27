@@ -4,6 +4,10 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+// This is the Booking pojo entity class. It mainly uses getters and setters.
+// It has a Many to one relationship with the User and Place entity.
+// For the place entity, it has two foreign keys, pointing to a place of departure and one of destination.
+// This class also has some basic back-end field validation capabilities.
 @Entity
 public class Booking {
     @Id

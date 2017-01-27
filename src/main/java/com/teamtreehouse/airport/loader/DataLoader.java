@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
+// This is a Spring component method that creates entries for all model entities at the start/restart of the application.
 @Component
 public class DataLoader implements ApplicationRunner{
 
@@ -25,6 +26,8 @@ public class DataLoader implements ApplicationRunner{
     @Autowired
     private UserDao userDao;
 
+    // This ApplicationRunner interface method is overridden,
+    // in the way that it adds Booking, Place and User entities whenever the application is started/restarted.
     @Override
     public void run(ApplicationArguments args) throws Exception {
         for(int i = 1;i <= 5;i++){

@@ -19,7 +19,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+// This is the Booking controller, where I included two main methods which route the user to a home page with a
+// booking form in which a user can schedule a flight, and also the post method to store that information
+// into the database.
+// Another thing to mention is that I included a InitBinder method in order to accept a certain Date format
+// for each Date field within the Booking form.
+// The data is stored/retrieved using the BookingService, UserService, and PlaceService interfaces.
+// The concepts used here are dependency injection with autowiring.
+// This means that Spring application is passing to the BookingService reference for example a BookingServiceImpl object
+// at runtime.
 @Controller
 public class BookingController {
 
@@ -32,6 +40,8 @@ public class BookingController {
     @Autowired
     private PlaceService placeService;
 
+    // This is the method that sends a GET request for the home page of the website, that include the booking form.
+    // It passes three parameters, a booking object, and also users and places objects.
     @RequestMapping("/")
     public String bookingForm(Model model){
         if(!model.containsAttribute("booking")){
@@ -42,6 +52,8 @@ public class BookingController {
         return "booking/index";
     }
 
+    // This is the InitBinder method for setting a format for the Date fields within the booking form.
+    // This method is very important, as without it I could not pass dates from the fields to this controller.
     @InitBinder
     public void dataBinding(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -50,6 +62,10 @@ public class BookingController {
         binder.registerCustomEditor(Date.class, "returnDate", new CustomDateEditor(dateFormat, true));
     }
 
+    // This is the method that gets the POST request from the booking form, and stores the provided
+    // information into the database.
+    // It includes a form of validation, so if the information passed is valid, a positive flash message appears
+    // Otherwise, an error flash message pops up, saying that some/all the information passed is invalid.
     @RequestMapping(value = "/bookings/add-booking", method = RequestMethod.POST)
     public String addBooking(@Valid Booking booking, BindingResult result, RedirectAttributes redirectAttributes){
         if(result.hasErrors()){

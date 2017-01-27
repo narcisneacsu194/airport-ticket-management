@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 public class UserDaoImpl extends GenericDaoImpl<User>
 implements UserDao{
 
+    // This particular method had to be overridden, in order to include the Hibernate initialize static method.
+    // This method helps prevent data fetching runtime errors.
     @Override
     public User findById(Long id){
         Session session = sessionFactory.openSession();

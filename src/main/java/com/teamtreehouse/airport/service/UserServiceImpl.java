@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+// This class implements the methods from the UserService interface,
+// which simply call their relative UserDao methods.
 @Service
 public class UserServiceImpl implements UserService{
 

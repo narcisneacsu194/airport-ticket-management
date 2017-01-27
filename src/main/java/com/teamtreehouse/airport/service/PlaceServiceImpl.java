@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+// This class implements the methods from the BookingService interface,
+// which simply call their relative BookingDao methods.
 @Service
 public class PlaceServiceImpl implements PlaceService{
 

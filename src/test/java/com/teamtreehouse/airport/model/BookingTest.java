@@ -6,7 +6,9 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+// This class has testing methods for the Booking entity.
+// It mainly tests the getters and setters and the variable relative to those, verifying that the hard coded value is the same
+// with what is eventually assigned to the variable.
 import static org.junit.Assert.*;
 public class BookingTest {
     Booking booking;

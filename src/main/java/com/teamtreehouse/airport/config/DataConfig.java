@@ -11,7 +11,8 @@ import org.springframework.core.io.Resource;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import javax.sql.DataSource;
-
+// This is a Spring configuration file that creates special database/backend beans.
+// It makes extensive use of the application.properties file located in the main/resources folder.
 @Configuration
 @PropertySource("application.properties")
 public class DataConfig {
@@ -19,6 +20,7 @@ public class DataConfig {
     @Autowired
     private Environment env;
 
+    // This is a Java Bean method that creates a Session factory object for autowiring.
     @Bean
     public LocalSessionFactoryBean sessionFactory(){
         Resource config = new ClassPathResource("hibernate.cfg.xml");
@@ -29,6 +31,7 @@ public class DataConfig {
         return sessionFactory;
     }
 
+    // This is a Java Bean method that creates a Data Source for autowiring.
     @Bean
     public DataSource dataSource(){
         BasicDataSource ds = new BasicDataSource();

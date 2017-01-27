@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
-
+// This class has testing methods for the User entity.
+// It mainly tests the getters and setters and the variable relative to those, verifying that the hard coded value is the same
+// with what is eventually assigned to the variable.
 public class UserTest {
     User user;
     Booking booking;

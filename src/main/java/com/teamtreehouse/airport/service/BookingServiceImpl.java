@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+// This class implements the methods from the BookingService interface,
+// which simply call their relative BookingDao methods.
 @Service
 public class BookingServiceImpl implements BookingService{
 

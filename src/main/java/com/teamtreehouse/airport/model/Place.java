@@ -5,7 +5,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
-
+// This is the Place pojo entity class. It mainly uses getters and setters.
+// It has a One to many relationship with the Booking entity.
+// If one instance of this entity is deleted, then all the bookings related to it are removed as well.
+// This class also has some basic back-end field validation capabilities.
 @Entity
 public class Place {
     @Id
